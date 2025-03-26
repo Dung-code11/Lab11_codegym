@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập JavaScript</title>
+</head>
+<body>
+    <button onclick="gameDoanSo()">Chơi</button>
+    <script>
+        // Bài 1
+        for (let i = 1; i <= 100; i++) {
+            console.log(i);
+            document.write(i);
+            if (i === 99) {
+                alert("Đã hoàn thành!");
+            }
+        }
+
+        // Bài 2
+        let nhietDo = prompt("Nhập nhiệt độ hiện tại:");
+        nhietDo = Number(nhietDo);
+        if (nhietDo > 100) {
+            alert("Vui lòng giảm nhiệt độ!");
+        } else if (nhietDo < 20) {
+            alert("Vui lòng tăng nhiệt độ!");
+        }
+
+        // Bài 3
+        function fibonacci(n) {
+            let fib = [0, 1];
+            for (let i = 2; i < n; i++) {
+                fib.push(fib[i - 1] + fib[i - 2]);
+            }
+            console.log(fib.slice(0, 20));
+            document.write(fib.slice(0, 20));
+        }
+        fibonacci(20);
+
+        // Bài 4
+        function findFibonacciDiv5() {
+            let a = 0, b = 1, temp;
+            while (true) {
+                temp = a + b;
+                a = b;
+                b = temp;
+                if (b % 5 === 0) {
+                    console.log("Số đầu tiên trong dãy Fibonacci chia hết cho 5 là: ", b);
+                    document.write("Số đầu tiên trong dãy Fibonacci chia hết cho 5 là: ", b);
+                    break;
+                }
+            }
+        }
+        findFibonacciDiv5();
+
+        // Bài 5
+        function sumFibonacci(n) {
+            let fib = [0, 1], sum = 1;
+            for (let i = 2; i < n; i++) {
+                fib.push(fib[i - 1] + fib[i - 2]);
+                sum += fib[i];
+            }
+            console.log("Tổng của 20 số Fibonacci đầu tiên: ", sum);
+        document.write("Tổng của 20 số Fibonacci đầu tiên: ", sum);
+        }
+        sumFibonacci(20);
+
+        // Bài 6
+        function sumDiv7(n) {
+            let sum = 0, count = 0, num = 0;
+            while (count < n) {
+                if (num % 7 === 0) {
+                    sum += num;
+                    count++;
+                }
+                num++;
+            }
+            console.log("Tổng của 30 số chia hết cho 7 đầu tiên: ", sum);
+            document.write("Tổng của 30 số chia hết cho 7 đầu tiên:",sum);
+        }
+        sumDiv7(30);
+
+        // Bài 7
+        for (let i = 1; i <= 100; i++) {
+            if (i % 3 === 0 && i % 5 === 0) {
+                console.log("FizzBuzz");
+                document.write("FizzBuzz");
+            } else if (i % 3 === 0) {
+                console.log("Fizz");
+                document.write("Fizz");
+            } else if (i % 5 === 0) {
+                console.log("Buzz");
+                document.write("Buzz");
+            } else {
+                console.log(i);
+                document.write(i);
+            }
+        }
+
+        // Bài 8: Game đoán số
+        function gameDoanSo() {
+            let min = Number(prompt("Nhập số nhỏ nhất trong khoảng đoán:"));
+            let max = Number(prompt("Nhập số lớn nhất trong khoảng đoán:"));
+            let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            let guess;
+            while (true) {
+                guess = Number(prompt("Nhập số bạn đoán:"));
+                if (guess === randomNumber) {
+                    alert("Chúc mừng! Bạn đã đoán đúng.");
+                    break;
+                } else if (guess > randomNumber) {
+                    alert("Số bạn đoán lớn hơn. Hãy thử lại!");
+                } else {
+                    alert("Số bạn đoán nhỏ hơn. Hãy thử lại!");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
